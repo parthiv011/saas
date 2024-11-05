@@ -1,6 +1,9 @@
+import { DiscordMessage } from '@/components/discord-message';
+import { DiscordUI } from '@/components/discord-ui';
 import { Heading } from '@/components/heading';
 import { HeroButton } from '@/components/hero-button';
 import { MaxWidthWrapper } from '@/components/max-width-wrapper';
+import { AnimatedList, AnimatedListItem } from '@/components/ui/animated-list';
 import { Check } from 'lucide-react';
 
 export default function Home() {
@@ -52,7 +55,45 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
-      <section></section>
+      <section className="relative bg-black pb-4">
+        <div className="absolute inset-x-0 bottom-24 top-24 bg-indigo-700" />
+        <div className="relative mx-auto">
+          <MaxWidthWrapper className="relative">
+            <div className="m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:m-4 lg:rounded-2xl lg:p-4">
+              <DiscordUI>
+                <AnimatedList>
+                  <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="Image"
+                    username="Chandler Bing"
+                    timestamp="Today at 12pm"
+                    badgeText="Sign up"
+                    badgeColor="#43b581"
+                    title="💸 New User signed up"
+                    content={{
+                      name: 'Renegoku',
+                      email: 'renegoku@demon.xyz',
+                    }}
+                  />
+                  <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="Image"
+                    username="Chandler Bing"
+                    timestamp="Today at 12pm"
+                    badgeText="Sign up"
+                    badgeColor="#43b581"
+                    title="🔥 New User signed up"
+                    content={{
+                      name: 'Renegoku',
+                      email: 'renegoku@demon.xyz',
+                    }}
+                  />
+                </AnimatedList>
+              </DiscordUI>
+            </div>
+          </MaxWidthWrapper>
+        </div>
+      </section>
       <section></section>
       <section></section>
     </>
