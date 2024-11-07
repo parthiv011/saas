@@ -21,19 +21,19 @@ import { PropsWithChildren } from 'react';
 
 export const DiscordUI = ({ children }: PropsWithChildren) => {
   return (
-    <div className="bg-discord-background flex min-h-[800px] w-full max-w-[1200px] overflow-hidden rounded-lg text-white shadow-xl">
+    <div className="flex min-h-[800px] w-full max-w-[1200px] overflow-hidden rounded-lg bg-discord-background text-white shadow-xl">
       {/* server list */}
       <div className="hidden w-[72px] flex-col items-center bg-[#202225] py-3 sm:flex">
-        <div className="bg-discord-brand-color mb-2 flex size-12 items-center justify-center rounded-2xl transition-all duration-200 hover:rounded-xl">
+        <div className="mb-2 flex size-12 items-center justify-center rounded-2xl bg-discord-brand-color transition-all duration-200 hover:rounded-xl">
           <DiscordLogoIcon className="size-8" fill="#fff" />
         </div>
 
-        <div className="bg-discord-background my-2 h-[2px] w-8 rounded-full" />
+        <div className="my-2 h-[2px] w-8 rounded-full bg-discord-background" />
 
         {[...Array(5)].map((_, index) => (
           <div
             key={index}
-            className="bg-discord-background hover:bg-discord-brand-color mb-3 flex size-12 cursor-not-allowed items-center justify-center rounded-3xl transition-all duration-200 hover:rounded-xl"
+            className="mb-3 flex size-12 cursor-not-allowed items-center justify-center rounded-3xl bg-discord-background transition-all duration-200 hover:rounded-xl hover:bg-discord-brand-color"
           >
             <span className="text-lg font-semibold text-gray-400">
               {String.fromCharCode(65 + index)}
@@ -84,7 +84,7 @@ export const DiscordUI = ({ children }: PropsWithChildren) => {
                   key={index}
                   className="flex cursor-not-allowed items-center rounded px-2 py-1.5 text-gray-600"
                 >
-                  <div className="bg-discord-background mr-3 size-8 rounded-full" />
+                  <div className="mr-3 size-8 rounded-full bg-discord-background" />
                   <span className="font-medium">User {index + 1}</span>
                 </div>
               ))}
@@ -145,7 +145,7 @@ export const DiscordUI = ({ children }: PropsWithChildren) => {
 
         {/* messages*/}
 
-        <div className="bg-discord-background flex flex-1 flex-col-reverse overflow-y-auto p-4">
+        <div className="flex flex-1 flex-col-reverse overflow-y-auto bg-discord-background p-4">
           {children}
         </div>
 

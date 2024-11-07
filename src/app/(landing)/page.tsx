@@ -9,6 +9,7 @@ import { Check } from 'lucide-react';
 export default function Home() {
   return (
     <>
+      {/* Hero Section */}
       <section className="relative py-24 md:py-32">
         <MaxWidthWrapper>
           <div className="relative mx-auto flex flex-col items-center gap-10">
@@ -55,6 +56,7 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
+      {/* Discord preview section */}
       <section className="relative bg-black pb-4">
         <div className="absolute inset-x-0 bottom-24 top-24 bg-indigo-700" />
         <div className="relative mx-auto">
@@ -81,7 +83,7 @@ export default function Home() {
                     username="Chandler Bing"
                     timestamp="Today at 12pm"
                     badgeText="Sign up"
-                    badgeColor="#43b581"
+                    badgeColor="#faa61a"
                     title="🔥 New User signed up"
                     content={{
                       name: 'Renegoku',
@@ -94,7 +96,31 @@ export default function Home() {
           </MaxWidthWrapper>
         </div>
       </section>
-      <section></section>
+      {/* Grid section */}
+      <section className="relative py-24 sm:py-32">
+        <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-20">
+          <div>
+            <h2 className="text-center text-base/7 font-semibold text-gray-600">
+              Intuitive Monitoring
+            </h2>
+            <Heading>Stay Ahead with real time insights</Heading>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4 lg:grid-cols-2">
+            <div className="relative lg:row-span-2">
+              <div className="absolute inset-px rounded-lg bg-gray-200/50 lg:rounded-l-[2rem]" />
+
+              <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1)] lg:rounded-[calc(2rem+1px)]">
+                <div className="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
+                  <p className="mt-2 text-lg/7 font-medium tracking-tight text-white">
+                    Real time Notification
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </MaxWidthWrapper>
+      </section>
       <section></section>
     </>
   );

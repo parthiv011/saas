@@ -1,7 +1,7 @@
-import { DM_Sans } from 'next/font/google';
-import type { Metadata } from 'next';
-import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
+import type { Metadata } from 'next';
+import { DM_Sans } from 'next/font/google';
+import './globals.css';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -21,7 +21,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${dmSans.variable} antialiased`}>{children}</body>
+        <body
+          className={`${dmSans.variable} flex min-h-[calc(100vh-1px)] flex-col antialiased`}
+        >
+          <main className="relative flex flex-1 flex-col">{children}</main>
+        </body>
       </html>
     </ClerkProvider>
   );

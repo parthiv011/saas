@@ -67,7 +67,7 @@ export const DiscordMessage = ({
               <span
                 className={cn(
                   'order-2 inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset',
-                  getBadgeStyles('#faa61a')
+                  getBadgeStyles(badgeColor)
                 )}
               >
                 {badgeText}
