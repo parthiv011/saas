@@ -6,14 +6,14 @@
 import { apiGet } from '@/app/utils/apiClient';
 import { Heading } from '@/components/heading';
 import { LoadingSpinner } from '@/components/loading-spinner';
+import { useQuery } from '@tanstack/react-query';
 import { LucideProps } from 'lucide-react';
-import { useQuery } from 'react-query';
 
 const Page = () => {
   const { data, isLoading, error } = useQuery({
     queryFn: async () => {
       const res = await apiGet('/api/auth');
-      // console.log(data);
+      console.log(data);
       return res.data;
     },
     queryKey: ['get-database-sync-status'],
