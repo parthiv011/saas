@@ -1,28 +1,15 @@
-import { currentUser } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
-import prisma from '../db';
+import { getDatabaseSyncStatus } from '../db/db';
 
 export async function GET() {
-  const auth = await currentUser();
-
-  if (!auth) {
-    return NextResponse.json({ isSynced: false });
+  try {
+    const response = await getDatabaseSyncStatus();
+    // console.log(response);
+    return NextResponse.json(response);
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Error syncing with the database' },
+      { status: 500 }
+    );
   }
-
-  let user = await prisma.user.findFirst({
-    where: { externalId: auth.id },
-  });
-
-  if (!user) {
-    // sync with the database
-    user = await prisma.user.create({
-      data: {
-        quotaLimit: 100,
-        externalId: auth.id,
-        email: auth.emailAddresses[0].emailAddress,
-      },
-    });
-  }
-
-  return NextResponse.json({ isSynced: true });
 }

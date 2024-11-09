@@ -8,16 +8,30 @@ import { Heading } from '@/components/heading';
 import { LoadingSpinner } from '@/components/loading-spinner';
 import { useQuery } from '@tanstack/react-query';
 import { LucideProps } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const Page = () => {
-  const { data, isLoading, error } = useQuery({
+  const router = useRouter();
+  const { data, error } = useQuery({
     queryFn: async () => {
-      const res = await apiGet('/api/auth');
-      console.log(data);
-      return res.data;
+      try {
+        const res = await apiGet('/api/auth');
+        return res;
+      } catch (error) {
+        console.error('Error fetching sync status:', error);
+        return { isSynced: false };
+      }
     },
     queryKey: ['get-database-sync-status'],
+    refetchInterval: (query) => {
+      return query.state.data?.isSynced ? false : 1000;
+    },
   });
+
+  useEffect(() => {
+    if (data?.isSynced) router.push('/dashboard');
+  }, [data, router]);
 
   return (
     <div className="flex w-full flex-1 items-center justify-center px-4">
