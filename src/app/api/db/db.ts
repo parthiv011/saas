@@ -1,5 +1,4 @@
 import { currentUser } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
 import prisma from '.';
 
 export async function getDatabaseSyncStatus() {

@@ -1,12 +1,29 @@
 import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
+import prisma from '../api/db';
+import { DashBoardPage } from '@/components/dashboard-page';
 
 const Page = async () => {
-  const user = await currentUser();
+  const auth = await currentUser();
+
+  if (!auth) {
+    redirect('/sign-in');
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      externalId: auth.id,
+    },
+  });
+
+  if (!user) {
+    redirect('/sign-in');
+  }
 
   return (
-    <div className="flex w-full flex-1 items-center justify-center text-white">
-      Welcome {user?.firstName} {user?.lastName} !
-    </div>
+    <DashBoardPage title="Dashboard" cta="Dashboard Page content">
+      Dashboard Page
+    </DashBoardPage>
   );
 };
 
